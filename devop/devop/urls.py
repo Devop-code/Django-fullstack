@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from apis.views import CreateUserCustom
+from apis.views import CreateUserCustom,DestroyUserView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -25,5 +25,7 @@ urlpatterns = [
     path('api/token/',TokenObtainPairView.as_view(),name='get_token'),
     path('api/token/refresh',TokenRefreshView.as_view(),name='refresh_token'),
     path('api-auth/',include("rest_framework.urls")),
+    path('api/',include('apis.urls')),
+    path('api/user/delete/<int:pk>/',DestroyUserView.as_view(),name="delete_user"),
     
 ]
