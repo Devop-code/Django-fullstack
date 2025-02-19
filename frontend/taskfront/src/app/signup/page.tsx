@@ -1,8 +1,16 @@
-import React from "react";
-
+'use client'
+import React,{useState,useEffect} from "react";
 const page = () => {
+  const [username,setUsername] = useState<string>("")
+    const [email,setEmail] = useState<string>("")
+    const [password,setPassword] = useState<string>("")
+    const [confirmPassword,setConfirmPassword] = useState<string>("")
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log(username,password,confirmPassword,email)
+    }
   return (
-    <form className="mt-4 mb-3">
+    <form className="mt-4 mb-3" onSubmit={handleSubmit}>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <div className="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -18,6 +26,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="username"
                 type="text"
+                value={username}
+                onChange={(e)=>setUsername(username + e.target.value)}
               />
             </div>
             <div>
@@ -29,6 +39,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="email"
                 type="email"
+                value={email}
+                onChange={(e)=>setEmail(email + e.target.value)}
               />
             </div>
             <div>
@@ -40,6 +52,8 @@ const page = () => {
                 placeholder="••••••••"
                 id="password"
                 type="password"
+                value={password}
+                
               />
             </div>
             <div>
@@ -51,6 +65,8 @@ const page = () => {
                 placeholder="••••••••"
                 id="confirmPassword"
                 type="password"
+                value={confirmPassword}
+                onChange={(e)=>setConfirmPassword(confirmPassword + e.target.value)}
               />
             </div>
             <div className="flex items-start">

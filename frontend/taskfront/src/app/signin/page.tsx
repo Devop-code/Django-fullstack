@@ -1,6 +1,13 @@
-import React from "react";
+'use client'
+import { useEffect,useState } from "react"
+import axios from "axios";
+
 
 const page = () => {
+  const [username,setUsername] = useState<string>("")
+  const [password,setPassword] = useState<string>("")
+
+  
   return (
     <form className="mt-4 mb-3">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
@@ -18,6 +25,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="username"
                 type="text"
+                value={username}
+                onChange={(e)=>setUsername(username + e.target.value)}
               />
             </div>
             <div>
@@ -29,6 +38,8 @@ const page = () => {
                 placeholder="••••••••"
                 id="password"
                 type="password"
+                value={password}
+                onChange={(e)=>setPassword(password + e.target.value)}
               />
             </div>
 

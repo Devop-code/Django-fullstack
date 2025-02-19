@@ -6,7 +6,7 @@ const page = () => {
       <div className="justify-center flex flex-col  items-center">
         <div className="mb-2 mt-4 justify-center flex">
           <h2 className="text-center text-lime-600 text-3xl">
-            Bienvenue dans l'application de gestion des taches
+            Bienvenue dans l application de gestion des taches
           </h2>
         </div>
         <br />
