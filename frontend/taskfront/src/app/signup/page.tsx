@@ -26,7 +26,7 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="username"
                 type="text"
-                value={username}
+               
                 onChange={(e)=>setUsername(username + e.target.value)}
               />
             </div>
@@ -39,7 +39,7 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="email"
                 type="email"
-                value={email}
+                
                 onChange={(e)=>setEmail(email + e.target.value)}
               />
             </div>
@@ -50,10 +50,8 @@ const page = () => {
               <input
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 placeholder="••••••••"
-                id="password"
                 type="password"
-                value={password}
-                
+                onChange={(e)=>setPassword(password+ e.target.value)}
               />
             </div>
             <div>
@@ -65,7 +63,7 @@ const page = () => {
                 placeholder="••••••••"
                 id="confirmPassword"
                 type="password"
-                value={confirmPassword}
+                
                 onChange={(e)=>setConfirmPassword(confirmPassword + e.target.value)}
               />
             </div>
