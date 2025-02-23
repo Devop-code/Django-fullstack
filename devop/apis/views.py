@@ -13,7 +13,7 @@ class CreateUserCustom(CreateAPIView):
 class DestroyUserView(DestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerialisers
-    permission_classes = [IsAuthenticated ,IsAdminUser]
+    permission_classes = [IsAuthenticated ,IsAdminUser] 
 class CreateListTask(ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializers

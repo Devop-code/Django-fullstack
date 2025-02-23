@@ -1,13 +1,26 @@
 'use client'
 import React,{useState,useEffect} from "react";
-const page = () => {
-  const [username,setUsername] = useState<string>("")
+import api from "../api";
+
+const Page = () => {
+    
+     const [username,setUsername] = useState<string>("")
     const [email,setEmail] = useState<string>("")
     const [password,setPassword] = useState<string>("")
     const [confirmPassword,setConfirmPassword] = useState<string>("")
-    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       console.log(username,password,confirmPassword,email)
+
+      try {
+      
+        const res = await api.post("/api/user/register", {username,email,password});
+       console.log(res)   
+  }catch(err){
+          alert(err);
+          throw err;
+      }
+      
     }
   return (
     <form className="mt-4 mb-3" onSubmit={handleSubmit}>
@@ -26,8 +39,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="username"
                 type="text"
-               
-                onChange={(e)=>setUsername(username + e.target.value)}
+               value={username}
+                onChange={(e)=>setUsername( e.target.value)}
               />
             </div>
             <div>
@@ -39,8 +52,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 id="email"
                 type="email"
-                
-                onChange={(e)=>setEmail(email + e.target.value)}
+                value={email}
+                onChange={(e)=>setEmail( e.target.value)}
               />
             </div>
             <div>
@@ -51,7 +64,8 @@ const page = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
                 placeholder="••••••••"
                 type="password"
-                onChange={(e)=>setPassword(password+ e.target.value)}
+                value={password}
+                onChange={(e)=>setPassword( e.target.value)}
               />
             </div>
             <div>
@@ -63,8 +77,8 @@ const page = () => {
                 placeholder="••••••••"
                 id="confirmPassword"
                 type="password"
-                
-                onChange={(e)=>setConfirmPassword(confirmPassword + e.target.value)}
+                value={confirmPassword}
+                onChange={(e)=>setConfirmPassword(e.target.value)}
               />
             </div>
             <div className="flex items-start">
@@ -102,4 +116,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
